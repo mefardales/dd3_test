@@ -1,0 +1,539 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "description": "API para administrar propietarios de bienes inmuebles y sus inmuebles.",
+    "version": "1.0.0",
+    "title": "API Inmuebles"
+  },
+  "tags": [
+    {
+      "name": "Inmobiliaria"
+    }
+  ],
+  "paths": {
+    "/propiedades/{id}": {
+      "get": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Extraer todas los inmuebles según su propietario",
+        "summary": "Extraer inmuebles según propietario",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Lista de inmuebles asociados a sus propietarios"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen inmuebles asociados a ese propietario",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/nv/": {
+      "post": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Insertar un nuevo propietario en la BD",
+        "summary": "Insertar propietario",
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no se pudo insertar el nuevo propietario",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/dl/{id}": {
+      "delete": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Eliminar un inmueble seguún su identificador",
+        "summary": "Eliminar un inmueble",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Eliminar un inmueble"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen inmueble con            ese ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/upd/{id}": {
+      "put": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Actualizar un inmueble seguún su id",
+        "summary": "Actualizar un inmueble",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Actualizar informacioón de inmueble"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen inmueble con            ese ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades": {
+      "get": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Extraer todas la propiedades disponibles",
+        "summary": "Propiedades disponibles",
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen propiedades         disponible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/tp/{value}": {
+      "get": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Extraer todas la propiedades por su tipo",
+        "summary": "Propiedades por tipo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "value",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Propiedades filtradas por su tipo (0 Renta, 1 Compra, 2 Ambas )"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request tipos de propiedades 0 || 1 || 2",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/hab/{value}": {
+      "get": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Extraer todas la propiedades por cantidad de habitaciones",
+        "summary": "Propiedades por cantidad de habitación",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "value",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Propiedades según la cantidad de habitaciones"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen propiedades con            esa cantidad de habitaciones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/ba/{value}": {
+      "get": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Extraer todas la propiedades según cantidad de baños",
+        "summary": "Propiedades disponibles por cantidad de baños",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "value",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Propiedades según la cantidad de baños"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen propiedades con            esa cantidad de baños",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/est/{value}": {
+      "get": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Extraer todas la propiedades disponibles por cantidad de estacionamientos",
+        "summary": "Propiedades por cantidad de estacionamientos",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "value",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Propiedades según la cantidad de estacionamientos"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen propiedades con esa cantidad de estacionamientos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/mt/{value}": {
+      "get": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Extraer todas la propiedades seguún sus metros cuadrados",
+        "summary": "Propiedades disponibles  por metros cuadrados",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "value",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "Propiedades según la cantidad de metros cuadrados"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen propiedades con esa cantidad de metros cuadrados",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/propiedades/pre/{precioA}&{precioB}": {
+      "get": {
+        "tags": [
+          "Inmobiliaria"
+        ],
+        "description": "Extraer todas la propiedades seguún su rango de precio",
+        "summary": "Propiedades por rango de precio",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "precioA",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "float",
+              "minimum": 0
+            },
+            "description": "Precio menor de las propiedades"
+          },
+          {
+            "in": "path",
+            "name": "precioB",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "float",
+              "minimum": 0
+            },
+            "description": "Precio mayor de las propiedades"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status 200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inmueble"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request no existen propiedades en ese rango de precio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "inmueble": {
+        "type": "object",
+        "required": [
+          "value",
+          "id",
+          "precioA",
+          "precioB"
+        ],
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "habitaciones": {
+            "type": "string"
+          },
+          "bannos": {
+            "type": "number"
+          },
+          "estacionamientos": {
+            "type": "number"
+          },
+          "metros_cuadrados": {
+            "type": "number",
+            "format": "float"
+          },
+          "precio": {
+            "type": "number",
+            "format": "float"
+          },
+          "img": {
+            "type": "string"
+          },
+          "tipo_propiedad": {
+            "type": "number"
+          },
+          "propietario": {
+            "type": "number"
+          },
+          "disponible": {
+            "type": "number"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "Status number",
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "description": "Mensaje de error"
+          }
+        }
+      }
+    }
+  }
+}

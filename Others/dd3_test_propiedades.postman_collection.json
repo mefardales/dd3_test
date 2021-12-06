@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "1025b87c-d4aa-4af2-aa1e-b253377bae47",
+		"name": "dd3_test_propiedades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "postPropiedades",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/nv/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"nv",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPropiedadesDsp",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPropiedadesTipo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/tp/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"tp",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPropiedadesHab",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/hab/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"hab",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPropiedadesBa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/ba/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"ba",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPropiedadesEst",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/est/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"est",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPropiedadesMt",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/mt/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"mt",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPropiedadesPre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/pre/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"pre",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPropiedadesPro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/pro",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"pro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePropiedades",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePropietario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/pr/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"pr",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePropiedades",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4000/propiedades/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"propiedades",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
